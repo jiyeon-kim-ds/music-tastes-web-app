@@ -6,8 +6,6 @@ from flask_migrate import Migrate
 import os
 from dotenv import load_dotenv
 import json
-# from embedding_as_service_client import EmbeddingClient
-# from sklearn.linear_model import LogisticRegression
 import pickle 
 import pandas as pd
 from sqlalchemy import update
@@ -15,30 +13,13 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base 
 import psycopg2
 import urllib.parse as up
+load_dotenv()
 
-
-# conn = psycopg2.connection(
-#     host = server_name,
-#     database = database_name,
-#     user = user_name,
-#     password = password
-# )
-
-# db_string = "arjuna.db.elephantsql.com:5432/qrwwixqu"
-# db = create_engine(db_string)
-# base = declarative_base()
-
-
-
+DATABASE = os.getenv('DATABASE_URI')
 FILEPATH = './models/spotify_model.pkl'
-POSTGRES_URL = 'ec2-75-101-212-64.compute-1.amazonaws.com'
-POSTGRES_USER = 'grhvwuiamqihhj'
-POSTGRES_PW = '1f9ffb94cc8c8e1d48055d7ac48da96e9896528e4d8ccd89e137321de764057e'
-POSTGRES_DB = 'd465hnfnm329aj'
-DATABASE_URI = 'postgres://grhvwuiamqihhj:1f9ffb94cc8c8e1d48055d7ac48da96e9896528e4d8ccd89e137321de764057e@ec2-75-101-212-64.compute-1.amazonaws.com:5432/d465hnfnm329aj'
 app = Flask(__name__)
-engine = create_engine(DATABASE_URI)
-app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
+engine = create_engine(DATABASE)
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

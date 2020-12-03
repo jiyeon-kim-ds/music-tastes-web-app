@@ -1,1 +1,1 @@
-web: gunicorn 'spotify'
+web: gunicorn spotify_app.spotify:app
