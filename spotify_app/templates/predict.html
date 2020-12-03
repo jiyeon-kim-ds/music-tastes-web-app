@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title  %}
-Spotify
+Music Taste Prediction App
 {% if message %}
 {{ message }}
 {% endif %}
 {% endblock  %}
 
 {% block lead  %}
-Analyze
+Let's Predict
 {% endblock  %}
 
 {% block main_body  %}
-Press Analyze Button
+To predict press the predict button
 
 <form method="POST" action="/result">
   <input name="artist_name" class="form-control" type="text" placeholder="Artist Name">
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Artist Name</label>
+    <label for="exampleFormControlSelect1"></label>
   </div>
-  <input type="submit" class="btn btn-primary" value="Analyze" />
+  <input type="submit" class="btn btn-primary" value="Predict" />
 </form>
 {% endblock  %}
 

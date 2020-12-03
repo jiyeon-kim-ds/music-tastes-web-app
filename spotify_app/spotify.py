@@ -110,7 +110,6 @@ def add_artist(artist_name=None):
         # # db.session.commit()
         db.session.add(new_artist)
         db.session.commit()
-    
     # results = sp.search(q='artist:' + artist_name, type='artist')
     # items = results['artists']['items']
     # if len(items) > 0:
@@ -135,12 +134,12 @@ def delete_artist(artist_name=None):
     return render_template('delete.html')
 
 
-@app.route('/analyze')
-def analyze_artists(artist_name=None):
-    return render_template('analyze.html')
+@app.route('/predict')
+def predict_artists(artist_name=None):
+    return render_template('predict.html')
 
 @app.route('/result', methods=["GET", "POST"])
-def result():
+def result(result=None):
     if request.method == "POST":
         print(dict(request.form))
         result = request.form
@@ -160,7 +159,6 @@ def result():
         first_track_id = first_track["id"]
         og_features = sp.audio_features(first_track_id)
         features = og_features[0]
-        # breakpoint()
         df = into_df(features)
 
         # model import
@@ -183,7 +181,7 @@ def result():
             db.session.query(artist).filter(artist.id == artist_id).update({'loveorhate': pred_id})
             # artist_update.loveorhate = pred_id
             db.session.commit()
-        return pred_id
+        # return pred_id
         # result_update = update(artist).where(artist.id==artist_id).values(loveorhate=pred_id)
         # db.session.add(result_update)
         # to_update = db.session.query(artist).filter(artist.id == artist_id).one()

@@ -2,10 +2,16 @@
 
 
 {% block title  %}
-Music Taste Analyze App
+Music Taste Prediction App
+{% if message %}
+{{ message }}
+{% endif %}
 {% endblock  %}
 
+{% block lead  %}
+Prediction Result
+{% endblock  %}
 
 {% block main_body  %}
-Prediction Result = {{ result }}
+{{ result }}
 {% endblock  %}

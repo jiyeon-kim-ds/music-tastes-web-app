@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title  %}
-Music Taste Analyze App
+Music Taste Prediction App
 {% if message %}
 {{ message }}
 {% endif %}
@@ -17,8 +17,9 @@ To add press the add button
 <form method="POST" action="/add">
   <input name="artist_name" class="form-control" type="text" placeholder="Artist Name">
   <div class="form-group">
-    <label for="exampleFormControlSelect1">Artist Name</label>
+    <label for="exampleFormControlSelect1"></label>
   </div>
   <input type="submit" class="btn btn-primary" value="Add" />
 </form>
 {% endblock  %}
+
