@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title  %}
+Music Taste Prediction App
+{% endblock  %}
+
+
+{% block main_body  %}
+Test jiyeon's music taste via this app
+{% if data %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Artist</th>
+      <th scope="col">Love or Hate</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for artist in data %}
+    <tr>
+      <th scope="row">{{ artist.id }}</th>
+      <td>{{ artist.name }}</td>
+      <td>{{ artist.loveorhate }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock  %}

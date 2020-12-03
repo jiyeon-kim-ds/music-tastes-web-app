@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Music Taste Analyze App
+{% if message %}
+{{ message }}
+{% endif %}
+{% endblock  %}
+
+{% block lead  %}
+Delete Artist
+{% endblock  %}
+
+{% block main_body  %}
+To delete press the delete button
+
+<form method="POST" action="/delete"">
+  <input name="artist_name" class="form-control" type="text" placeholder="Artist Name">
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Artist Name</label>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Delete" />
+</form>
+{% endblock  %}
+

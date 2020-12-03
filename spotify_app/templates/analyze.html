@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title  %}
+Spotify
+{% if message %}
+{{ message }}
+{% endif %}
+{% endblock  %}
+
+{% block lead  %}
+Analyze
+{% endblock  %}
+
+{% block main_body  %}
+Press Analyze Button
+
+<form method="POST" action="/result">
+  <input name="artist_name" class="form-control" type="text" placeholder="Artist Name">
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Artist Name</label>
+  </div>
+  <input type="submit" class="btn btn-primary" value="Analyze" />
+</form>
+{% endblock  %}
+
