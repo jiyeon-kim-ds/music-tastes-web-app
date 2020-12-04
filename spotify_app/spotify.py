@@ -16,6 +16,8 @@ import urllib.parse as up
 load_dotenv()
 
 DATABASE = os.getenv('DATABASE_URI')
+client_id = os.getenv('CLIENT_ID')
+client_secret = os.getenv('CLIENT_SECRET')
 FILEPATH = './models/spotify_model.pkl'
 app = Flask(__name__)
 engine = create_engine(DATABASE)
@@ -25,8 +27,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 FILEPATH = os.path.join(os.path.dirname(__file__), "models",
                           "spotify_model.pkl")
-sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="8a196cb7c2ea43f389b42ef106cf480e",
-                                                           client_secret="8ef2c43b00694216bb86e4e191b80c22"))
+sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id,
+                                                           client_secret=client_secret))
 
 # results = sp.search(q='Red Velvet', limit=20)
 # for idx, track in enumerate(results['tracks']['items']):
